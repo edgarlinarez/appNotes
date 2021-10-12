@@ -1,0 +1,28 @@
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>Editar Nota</h3>
+        </div>
+        <div class="card-body">
+            {{!-- NECESITO UNA RUTA DESPUES DE GUARDAR Y ESA RUTA SE CREA DESDE EL SERVIDOR --}}
+            {{!-- ESTA RUTA DEL FORM LA DEBO CREAR EN ROUTES/NOTES.JS 
+            ADEMAS A LA RUTA SE LE AGREGA UNA CONSULTA Y EL PARAMETRO _METHOD=PUT
+            --}}
+            <form action="/notes/edit-note/{{note._id}}?_method=PUT" method="POST">
+                {{!-- PARA UTILIZAR EL METODO PUT SE CREA UN INPUT OCULTO PARA QUE EL SERVIDOR CONOZCA QUE ES EL METODO UTILIZADO --}}
+                {{!-- EL SERVIDOR REVISA EL INPUT A TRAVES DEL NAME Y LO COMPARA CON EL METODOOVERRIDE DE INDEX.JS COMO
+                ESTO EXISTE Y VE QUE SU VALOR ES PUT LO RECONOCE COMO TAL  --}}
+                <input type="hidden" name="_method" value="PUT" />
+                <div class="form-group">
+                    <input type="text" name="title" class="form-control" placeholder="Titulo" value={{note.title}}>
+                </div>
+                <div class="form-group">
+                    <textarea name="description" class="form-control">{{note.description}}</textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
